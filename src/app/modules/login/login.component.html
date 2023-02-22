@@ -4,10 +4,8 @@
     <form (ngSubmit)="onSubmit()" #personForm="ngForm">
         <div class="form-group">
             <label for="usuario">Usuario</label>
-            <input type="text" class="form-control" id="usuario" name="usuario"
-            #usuario="ngModel"
-            required
-            [(ngModel)]="model.usuario">
+            <input type="text" class="form-control" id="usuario" name="usuario" #usuario="ngModel" required
+                [(ngModel)]="model.usuario">
         </div>
 
         <!-- Mensaje de validación -->
@@ -17,10 +15,8 @@
 
         <div class="form-group">
             <label for="contra">Contraseña</label>
-            <input type="text" class="form-control" id="contra" name="contra"
-            #contra="ngModel"
-            required
-            [(ngModel)]="model.contra">
+            <input type="text" class="form-control" id="contra" name="contra" #contra="ngModel" required
+                [(ngModel)]="model.contra">
         </div>
 
         <!-- Mensaje de validación -->
@@ -31,10 +27,11 @@
         <button type="submit" class="btn btn-success" [disabled]="!personForm.form.valid">Enviar</button>
         <button type="button" class="btn btn-secondary" (click)="newPerson();">Nueva Persona</button>
         <button type="button" class="btn btn-secondary" (click)="personForm.reset()">Reset</button>
-        <button type="button" class="btn btn-secondary" (click)="newPerson();personForm.reset()">Nueva Persona y Reset</button>
+        <button type="button" class="btn btn-secondary" (click)="newPerson();personForm.reset()">Nueva Persona y
+            Reset</button>
     </form>
 </div>
-<div  class="container" [hidden]="!submitted">
+<div class="container" [hidden]="!submitted">
     <h2>Has enviado los siguientes datos:</h2>
     <div class="row">
         <div class="col-3">Usuario</div>
@@ -46,3 +43,4 @@
     </div>
     <br>
     <button type="button" class="btn btn-primary" (click)="submitted=false">Editar</button>
+</div>
