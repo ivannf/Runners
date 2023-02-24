@@ -1,46 +1,60 @@
-<div [hidden]="submitted" class="container">
-    <h1>Página de Login</h1>
-    {{ model | json }}
-    <form (ngSubmit)="onSubmit()" #personForm="ngForm">
-        <div class="form-group">
-            <label for="usuario">Usuario</label>
-            <input type="text" class="form-control" id="usuario" name="usuario" #usuario="ngModel" required
-                [(ngModel)]="model.usuario">
+<div class="container">
+  <div class="modal-dialog m-5" id="fondoInicioSesion">
+    <div class="modal-content">
+      <h1 class="text-lg-center mt-5" id="exampleModalLabel">INICIAR SESIÓN</h1>
+      <form class="px-5 py-5">
+        <h4 class="text-lg-center" id="exampleModalLabel">Utilizar tu cuenta Runner</h4>
+        <div class="form-outline mb-4">
+          <div class="input-group">
+            <mat-form-field class="example-full-width">
+              <input type="email" class="text-lg-center" matInput [formControl]="emailFormControl"
+                [errorStateMatcher]="matcher" placeholder="CORREO ELECTRÓNICO">
+              <mat-hint>Los errores apareceran al instante si existen!</mat-hint>
+              <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                Please enter a valid email address
+              </mat-error>
+              <mat-error *ngIf="emailFormControl.hasError('required')">
+                El email es <strong>requerido</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
         </div>
 
-        <!-- Mensaje de validación -->
-        <div [hidden]="usuario.valid || usuario.pristine" class="alert alert-danger">
-            El usuario es requerido
+        <div class="form-outline mb-4">
+          <div class="input-group">
+            <mat-form-field class="example-full-width">
+              <input type="password" class="text-lg-center" matInput [formControl]="passwordFormControl"
+                [errorStateMatcher]="matcher" placeholder="CONTRASEÑA">
+              <mat-hint>Los errores apareceran al instante si existen!</mat-hint>
+              <mat-error *ngIf="passwordFormControl.hasError('required')">
+                La contraseña es <strong>requerida</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
         </div>
 
-        <div class="form-group">
-            <label for="contra">Contraseña</label>
-            <input type="text" class="form-control" id="contra" name="contra" #contra="ngModel" required
-                [(ngModel)]="model.contra">
+        <div class="row mb-4">
+          <div class="col d-flex justify-content-center">
+            <a class="page-link" href="#!">¿Has olvidado la contraseña?</a>
+          </div>
+
+          <div class="col">
+            <button id="botonesBlack" mat-raised-button>SIGUIENTE</button>
+          </div>
         </div>
 
-        <!-- Mensaje de validación -->
-        <div [hidden]="contra.valid || contra.pristine" class="alert alert-danger">
-            La contraseña es requerida
-        </div>
+        <div class="row mb-4 mt-5">
+          <div class="col">
+            <a class="page-link mb-3" href="#!">¿AÚN NO TE HAS REGISTRADO?</a>
+            <button id="botonesWhite" mat-raised-button><strong>REGISTRARSE</strong></button>
+          </div>
 
-        <button type="submit" class="btn btn-success" [disabled]="!personForm.form.valid">Enviar</button>
-        <button type="button" class="btn btn-secondary" (click)="newPerson();">Nueva Persona</button>
-        <button type="button" class="btn btn-secondary" (click)="personForm.reset()">Reset</button>
-        <button type="button" class="btn btn-secondary" (click)="newPerson();personForm.reset()">Nueva Persona y
-            Reset</button>
-    </form>
-</div>
-<div class="container" [hidden]="!submitted">
-    <h2>Has enviado los siguientes datos:</h2>
-    <div class="row">
-        <div class="col-3">Usuario</div>
-        <div class="col-9">{{ model.usuario }}</div>
+          <div class="col">
+            <a class="page-link mb-3" href="#!">ENTRA COMO INVITADO</a>
+            <button id="botonesWhite" mat-raised-button><strong>INVITADO</strong></button>
+          </div>
+        </div>
+      </form>
     </div>
-    <div class="row">
-        <div class="col-3">Contraseña</div>
-        <div class="col-9">{{ model.contra }}</div>
-    </div>
-    <br>
-    <button type="button" class="btn btn-primary" (click)="submitted=false">Editar</button>
+  </div>
 </div>

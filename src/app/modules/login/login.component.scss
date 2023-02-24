@@ -1,7 +1,27 @@
-.ng-valid[required], .ng-valid.required {
-    border-left: 5px solid #42A948; /* green */
+#fondoInicioSesion {
+    background-color: #C4DBF0;
 }
 
-.ng-invalid:not(form) {
-    border-left: 5px solid #a94442; /* red */
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+#botonesBlack{
+    background-color: #282828;
+    color: #FFFFFF;
+    width: 30%;
+    height: 140%;
+}
+
+#botonesWhite{
+    background-color: #FFFFFF;
+    color: #282828;
+    width: 30%;
+    height: 60%;
 }
