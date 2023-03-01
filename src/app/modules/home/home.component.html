@@ -1,3 +1,17 @@
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav bg-dark" mode="side">
+        <p>Auto-resizing sidenav</p>
+        
+    </mat-drawer>
+
+    <div class="example-sidenav-content">
+        <button type="button" mat-button (click)="drawer.toggle()">
+            Toggle sidenav
+        </button>
+    </div>
+
+</mat-drawer-container>
+
 <div class="container">
     <div class="row">
         <div class="col-md-3 mx-auto my-5" *ngFor="let card of cards">
