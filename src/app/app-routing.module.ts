@@ -4,6 +4,7 @@ import { SkeletonComponent } from './layout/skeleton/skeleton.component';
 import { HomeComponent } from './modules/home/home.component';
 import { RegistrationComponent } from './modules/registration/registration.component';
 import { LoginComponent } from './modules/login/login.component';
+import { ForgotPasswordComponent } from './modules/forgot-password/forgot-password.component'
 
 const routes: Routes = [
   {
@@ -13,7 +14,8 @@ const routes: Routes = [
     children: [
       { path: '', component: LoginComponent  },
       { path: 'register', component: RegistrationComponent},
-      { path: 'main', component: HomeComponent}
+      { path: 'main', component: HomeComponent},
+      { path: 'forgotPassword', component: ForgotPasswordComponent}
     ] 
   }
 ];
