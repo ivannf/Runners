@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators, FormGroup, AbstractControl} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
+import { Usuario } from './usuarioRegistrado.model';
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -47,8 +48,22 @@ export class RegistrationComponent {
       password: this.passwordFormControl,
       confirmPassword: this.confirmPasswordFormControl
     },
-    [Validators.required, Validators.minLength(6), Validators.maxLength(12), this.matchPassword]
+    [Validators.required, this.matchPassword, Validators.minLength(6), Validators.maxLength(12)]
   );
+
+    // Datos de ejemplo para la persona
+    model = new Usuario("Mamerto Galán Zabala","mamer@gmail.com","1234567","1234567");
+
+    // Control de Formulario enviado por defecto a falso
+    submitted = false;
+  
+    // Una vez que el formulario se envía entonces se establece a enviado.
+    onSubmit() { this.submitted = true; }
+  
+    // Método para inicializar una nueva persona:
+    newPerson () {
+      this.model = new Usuario("Mamerto Galán Zabala","mamer@gmail.com","1234567","1234567");
+    };
 }
 
 
