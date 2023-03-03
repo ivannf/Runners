@@ -10,7 +10,7 @@
                                 <mat-form-field class="example-full-width">
                                     <mat-label>DNI</mat-label>
                                     <input type="text" matInput [formControl]="dniFormControl" [errorStateMatcher]="matcher"
-                                        placeholder="12345678X">
+                                        placeholder="12345678X" [(ngModel)]="model.dni">
                                     <mat-error *ngIf="dniFormControl.hasError('pattern') && !dniFormControl.hasError('required')">
                                         Porfavor introduzca un DNI válido
                                     </mat-error>
@@ -26,7 +26,7 @@
                                 <mat-form-field class="example-full-width">
                                     <mat-label>Nombre</mat-label>
                                     <input type="text" matInput [formControl]="nombreFormControl" [errorStateMatcher]="matcher"
-                                        placeholder="Nombre">
+                                        placeholder="Nombre" [(ngModel)]="model.nombre">
                                     <mat-error *ngIf="nombreFormControl.hasError('required')">
                                         El nombre es <strong>requerido</strong>
                                     </mat-error>
@@ -39,7 +39,7 @@
                                 <mat-form-field class="example-full-width">
                                     <mat-label>Apellidos</mat-label>
                                     <input type="text" matInput [formControl]="apellidosFormControl" [errorStateMatcher]="matcher"
-                                        placeholder="Apellidos">
+                                        placeholder="Apellidos" [(ngModel)]="model.apellidos">
                                     <mat-error *ngIf="apellidosFormControl.hasError('required')">
                                         Los apellidos son <strong>requeridos</strong>
                                     </mat-error>
@@ -52,7 +52,7 @@
                                 <mat-form-field class="example-full-width">
                                     <mat-label>Dirección</mat-label>
                                     <input type="text" matInput [formControl]="direccionFormControl" [errorStateMatcher]="matcher"
-                                        placeholder="Dirección">
+                                        placeholder="Dirección" [(ngModel)]="model.direccion">
                                     <mat-error *ngIf="direccionFormControl.hasError('required')">
                                         La dirección es <strong>requerida</strong>
                                     </mat-error>
@@ -63,7 +63,7 @@
                                 <mat-form-field class="example-full-width">
                                     <mat-label>Club running</mat-label>
                                     <input type="text" matInput [formControl]="clubRunningFormControl" [errorStateMatcher]="matcher"
-                                        placeholder="Club running">
+                                        placeholder="Club running" [(ngModel)]="model.clubRunning">
                                     <mat-error *ngIf="clubRunningFormControl.hasError('required')">
                                         El club running es <strong>requerido</strong>
                                     </mat-error>
@@ -76,7 +76,7 @@
                                 <mat-form-field class="example-full-width">
                                     <mat-label>Talla de camiseta</mat-label>
                                     <input type="text" matInput [formControl]="tallaFormControl" [errorStateMatcher]="matcher"
-                                        placeholder="XS-S-M-L-XL">
+                                        placeholder="XS-S-M-L-XL" [(ngModel)]="model.talla">
                                     <mat-error *ngIf="tallaFormControl.hasError('pattern') && !tallaFormControl.hasError('required')">
                                         Porfavor introduzca una talla válida
                                     </mat-error>
@@ -92,7 +92,7 @@
                                 <mat-form-field class="example-full-width">
                                     <mat-label>Método de pago</mat-label>
                                     <input type="text" matInput [formControl]="metodoFormControl" [errorStateMatcher]="matcher"
-                                        placeholder="Cuenta bancaria o Efectivo">
+                                        placeholder="Cuenta bancaria o Efectivo" [(ngModel)]="model.metodoPago">
                                     <mat-error *ngIf="metodoFormControl.hasError('required')">
                                         El método de pago es <strong>requerido</strong>
                                     </mat-error>
@@ -108,7 +108,11 @@
                     <div>
                         <section>
                             <button mat-raised-button id="boton" onClick="window.open('/register')" class="col-3">CREAR NUEVA CUENTA</button>
-                            <button mat-raised-button id="boton" onClick="window.open('/main')" class="col-3">ACEPTAR</button>
+                            <button mat-raised-button id="boton" onClick="window.open('/main')" [disabled]="(dniFormControl.hasError('pattern') || dniFormControl.hasError('required')) 
+                                                                                                || (nombreFormControl.hasError('required')) || (apellidosFormControl.hasError('required')) 
+                                                                                                || (direccionFormControl.hasError('required')) || (clubRunningFormControl.hasError('required')) 
+                                                                                                || (tallaFormControl.hasError('required')) || (tallaFormControl.hasError('pattern')) 
+                                                                                                || (metodoFormControl.hasError('required'))" class="col-3">ACEPTAR</button>
                             <button mat-raised-button id="boton" onClick="window.open('/main')" class="col-3">CANCELAR</button>
                         </section>
                     </div>
