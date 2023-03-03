@@ -9,7 +9,6 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
 
 
-
 @NgModule({
   declarations: [],
   imports: [
@@ -17,19 +16,21 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatSlideToggleModule,
     MatToolbarModule,
     MatIconModule,
-    MatInputModule,
     MatCardModule,
     MatButtonModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatInputModule,
+    MatButtonModule
   ],
   exports: [
     MatSlideToggleModule,
     MatToolbarModule,
     MatIconModule,
-    MatInputModule,
     MatCardModule,
     MatButtonModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatInputModule,
+    MatButtonModule
   ]
 })
 export class MaterialModule { }
