@@ -13,14 +13,11 @@ const routes: Routes = [
     component: SkeletonComponent,
     pathMatch: 'prefix',
     children: [
-      { path: '', component: HomeComponent  },
+      { path: '', component: LoginComponent },
       { path: 'register', component: RegistrationComponent  },
-      { path: 'login', component: LoginComponent },
+      { path: 'main', component: HomeComponent  },
       { path: 'registroEvento', component: RegistroEventoComponent },
-      { path: '', component: LoginComponent  },
-      { path: 'register', component: RegistrationComponent},
-      { path: 'main', component: HomeComponent},
-      { path: 'forgotPassword', component: ForgotPasswordComponent}
+      { path: 'forgotPassword', component: ForgotPasswordComponent }
     ] 
   }
 ];
