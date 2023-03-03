@@ -1,27 +1,55 @@
 import { Component } from '@angular/core';
-import { Person } from './person.model';
+import {FormControl, FormGroupDirective, NgForm, Validators, FormGroup, AbstractControl} from '@angular/forms';
+import {ErrorStateMatcher} from '@angular/material/core';
+
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.scss']
 })
+
 export class RegistrationComponent {
-  // Tallas para el atributo size del modelo Person
-  sizes = ['XS','S','M','L','XL'];
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  nameFormControl = new FormControl('', [Validators.required, Validators.pattern('^[A-ZÑÁÉÍÓÚ][a-zA-ZñÑáéíóúÁÉÍÓÚ ]*$')
 
-  // Datos de ejemplo para la persona
-  model = new Person(1, 'Iván', 'Negrón Fernández', 'alum.inegronf.2021@iesalixar.org', this.sizes[3]);
+]);
+  passwordFormControl = new FormControl('', [
+    Validators.required,
+    Validators.minLength(6),
+    Validators.maxLength(12)
+  ]);
+  confirmPasswordFormControl = new FormControl('', [
+    Validators.required,
+    Validators.minLength(6),
+    Validators.maxLength(12)
+  ]);
 
-  // Control de Formulario enviado por defecto a falso
-  submitted = false;
+  matcher = new MyErrorStateMatcher();
 
-  // Una vez que el formulario se envía entonces se establece a enviado.
-  onSubmit() { this.submitted = true; }
-
-  // Método para inicializar una nueva persona:
-  newPerson () {
-    this.model = new Person(2,'','','','');
-  };
+  matchPassword(control: AbstractControl) {
+    const password = control.get('password')?.value;
+    const confirmPassword = control.get('confirmPassword')?.value;
+    return password === confirmPassword ? null : { notSame: true };
+  }
   
+  registrationForm = new FormGroup(
+    {
+      email: this.emailFormControl,
+      name: this.nameFormControl,
+      password: this.passwordFormControl,
+      confirmPassword: this.confirmPasswordFormControl
+    },
+    [Validators.required, Validators.minLength(6), Validators.maxLength(12), this.matchPassword]
+  );
 }
+
+
+
