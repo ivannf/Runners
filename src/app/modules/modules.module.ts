@@ -4,16 +4,20 @@ import { RegistrationComponent } from './registration/registration.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { RegistroEventoComponent } from './registro-evento/registro-evento.component';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
   declarations: [
     HomeComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    RegistroEventoComponent
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    CoreModule
   ],
   exports: [
     
