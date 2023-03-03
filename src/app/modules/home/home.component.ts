@@ -10,7 +10,7 @@ export class HomeComponent {
     {
       title: 'EVENTO 1',
       description:
-        'El maratón olímpico de París 2024 se abre por primera vez al público',
+        'Maratón olímpico de París 2024: Toda la información',
       buttonText: 'CLASIFICACIÓN',
       img: '../../../assets/img/arco_triunfo.jpg',
     },
@@ -29,7 +29,7 @@ export class HomeComponent {
     },
     {
       title: 'EVENTO 4',
-      description: 'Maratón de Nueva York 2022: Información completa',
+      description: 'Maratón de Nueva York 2022: Toda la información',
       buttonText: 'CLASIFICACIÓN',
       img: '../../../assets/img/maraton_new_york.jpg',
     },

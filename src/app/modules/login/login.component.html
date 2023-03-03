@@ -2,13 +2,15 @@
   <div class="modal-dialog m-5" id="fondoInicioSesion">
     <div class="modal-content">
       <h1 class="text-lg-center mt-5" id="exampleModalLabel">INICIAR SESIÓN</h1>
-      <form class="px-5 py-5">
+      <form class="px-5 py-5" (ngSubmit)="onSubmit()" #loginForm="ngForm" >
         <h4 class="text-lg-center" id="exampleModalLabel">Utilizar tu cuenta Runner</h4>
         <div class="form-outline mb-4">
           <div class="input-group">
             <mat-form-field class="example-full-width">
               <input type="email" class="text-lg-center" matInput [formControl]="emailFormControl"
-                [errorStateMatcher]="matcher" placeholder="CORREO ELECTRÓNICO">
+                [errorStateMatcher]="matcher" placeholder="CORREO ELECTRÓNICO" 
+                required
+                [(ngModel)]="model.email">
               <mat-hint>Los errores apareceran al instante si existen!</mat-hint>
               <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
                 Please enter a valid email address
@@ -24,7 +26,9 @@
           <div class="input-group">
             <mat-form-field class="example-full-width">
               <input type="password" class="text-lg-center" matInput [formControl]="passwordFormControl"
-                [errorStateMatcher]="matcher" placeholder="CONTRASEÑA">
+                [errorStateMatcher]="matcher" placeholder="CONTRASEÑA"
+                required
+                [(ngModel)]="model.contra">
               <mat-hint>Los errores apareceran al instante si existen!</mat-hint>
               <mat-error *ngIf="passwordFormControl.hasError('required')">
                 La contraseña es <strong>requerida</strong>
@@ -39,7 +43,7 @@
           </div>
 
           <div class="col">
-            <button type="submit" class="btn" id="botonesBlack" onClick="window.open('/main')" mat-raised-button>SIGUIENTE</button>
+            <button type="submit" class="btn" id="botonesBlack" onclick="location.href='/main'" [disabled]="(emailFormControl.hasError('email') || emailFormControl.hasError('required')) || (passwordFormControl.hasError('required'))" mat-raised-button>SIGUIENTE</button>
           </div>
         </div>
 
