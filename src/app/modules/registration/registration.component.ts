@@ -51,7 +51,7 @@ export class RegistrationComponent {
     [Validators.required, this.matchPassword, Validators.minLength(6), Validators.maxLength(12)]
   );
 
-    // Datos de ejemplo para la persona
+    // Datos de ejemplo para el usuario
     model = new Usuario("Mamerto Galán Zabala","mamer@gmail.com","1234567","1234567");
 
     // Control de Formulario enviado por defecto a falso
@@ -60,7 +60,7 @@ export class RegistrationComponent {
     // Una vez que el formulario se envía entonces se establece a enviado.
     onSubmit() { this.submitted = true; }
   
-    // Método para inicializar una nueva persona:
+    // Método para inicializar un nuevo usuario:
     newUsuario () {
       this.model = new Usuario("Mamerto Galán Zabala","mamer@gmail.com","1234567","1234567");
     };
