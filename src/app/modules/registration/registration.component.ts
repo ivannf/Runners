@@ -61,7 +61,7 @@ export class RegistrationComponent {
     onSubmit() { this.submitted = true; }
   
     // Método para inicializar una nueva persona:
-    newPerson () {
+    newUsuario () {
       this.model = new Usuario("Mamerto Galán Zabala","mamer@gmail.com","1234567","1234567");
     };
 }

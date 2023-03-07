@@ -1,6 +1,6 @@
 /**
- * @class Person
- * Contiene los datos del formulario para registrar una persona
+ * @class Usuario
+ * Contiene los datos del formulario para registrar un usuario.
  */
 export class Usuario {
 
