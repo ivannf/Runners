@@ -9,7 +9,7 @@
                         <mat-form-field class="example-full-width">
                             <mat-label>NOMBRE</mat-label>
                             <input type="name" matInput [formControl]="nameFormControl" [errorStateMatcher]="matcher"
-                                placeholder="Ej. Mamerto Galán Zabala">
+                                placeholder="Ej. Mamerto Galán Zabala" [(ngModel)]="model.nombre">
                             <mat-hint>¡Los errores aparecen instantáneamente!</mat-hint>
                             <mat-error *ngIf="nameFormControl.hasError('name') && !nameFormControl.hasError('required')">
                                 Por favor introduce un nombre válido (solo letras y espacios).
@@ -24,7 +24,7 @@
                         <mat-form-field class="example-full-width">
                             <mat-label>CORREO ELECTRÓNICO</mat-label>
                             <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
-                                placeholder="Ej. mamer@gmail.com">
+                                placeholder="Ej. mamer@gmail.com" [(ngModel)]="model.email">
                             <mat-hint>¡Los errores aparecen instantáneamente!</mat-hint>
                             <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
                                 Porfavor introduce un correo electrónico válido
@@ -35,29 +35,39 @@
                         </mat-form-field>
                         <mat-form-field class="example-full-width">
                             <mat-label>CONTRASEÑA</mat-label>
-                            <input type="password" matInput [formControl]="passwordFormControl" [errorStateMatcher]="matcher" placeholder="Ingrese su contraseña">
+                            <input type="password" matInput [formControl]="passwordFormControl" [errorStateMatcher]="matcher" placeholder="Ingrese su contraseña"
+                            [(ngModel)]="model.password">
                             <mat-hint>¡Los errores aparecen instantáneamente!</mat-hint>
                             <mat-error *ngIf="passwordFormControl.hasError('required')">La contraseña es <strong>obligatoria</strong></mat-error>
-                            <mat-error *ngIf="passwordFormControl.hasError('minlength')">La contraseña debe tener al menos 6 caracteres</mat-error>
-                            <mat-error *ngIf="passwordFormControl.hasError('maxlength')">La contraseña no debe tener más de 12 caracteres</mat-error>
                             <mat-error *ngIf="registrationForm.hasError('notSame') && !registrationForm.pristine">
                                 Las contraseñas no coinciden.
                             </mat-error> 
+                            <mat-error *ngIf="passwordFormControl.hasError('minlength')">La contraseña debe tener al menos 6 caracteres</mat-error>
+                            <mat-error *ngIf="passwordFormControl.hasError('maxlength')">La contraseña no debe tener más de 12 caracteres</mat-error>
                             </mat-form-field>
                         <mat-form-field class="example-full-width">
                             <mat-label>CONFIRMAR CONTRASEÑA</mat-label>
-                            <input type="password" matInput [formControl]="confirmPasswordFormControl" [errorStateMatcher]="matcher" placeholder="Ingrese su contraseña de nuevo">
+                            <input type="password" matInput [formControl]="confirmPasswordFormControl" [errorStateMatcher]="matcher" placeholder="Ingrese su contraseña de nuevo"
+                            [(ngModel)]="model.confirmPassword">
                             <mat-hint>¡Los errores aparecen instantáneamente!</mat-hint>
                             <mat-error *ngIf="confirmPasswordFormControl.hasError('required')">El confirmar contraseña es <strong>obligatorio</strong></mat-error>
-                            <mat-error *ngIf="confirmPasswordFormControl.hasError('minlength')">La contraseña debe tener al menos 6 caracteres</mat-error>
-                            <mat-error *ngIf="confirmPasswordFormControl.hasError('maxlength')">La contraseña no debe tener más de 12 caracteres</mat-error>
                             <mat-error *ngIf="registrationForm.hasError('notSame') && !registrationForm.pristine">
                                 Las contraseñas no coinciden.
-                            </mat-error>                       
+                            </mat-error>
+                            <mat-error *ngIf="confirmPasswordFormControl.hasError('minlength')">La contraseña debe tener al menos 6 caracteres</mat-error>
+                            <mat-error *ngIf="confirmPasswordFormControl.hasError('maxlength')">La contraseña no debe tener más de 12 caracteres</mat-error>                       
                         </mat-form-field>
                     </div>
                     <div id="bt">
-                        <button id="btRegister" onclick="window.open('/main')" class="col-3 mt-5" mat-raised-button>REGISTRARSE</button>
+                        <button id="btRegister" onclick="window.open('/main')" class="col-3 mt-5" mat-raised-button
+                        [disabled]="(emailFormControl.hasError('email') || emailFormControl.hasError('required')) || (passwordFormControl.hasError('required')) 
+                        || nameFormControl.hasError('name') && !nameFormControl.hasError('required') ||
+                        nameFormControl.hasError('required') || nameFormControl.hasError('pattern') || 
+                        passwordFormControl.hasError('required') || passwordFormControl.hasError('minlength') ||
+                        passwordFormControl.hasError('maxlength') || registrationForm.hasError('notSame') && !registrationForm.pristine ||
+                        confirmPasswordFormControl.hasError('required') || confirmPasswordFormControl.hasError('minlength') ||
+                        confirmPasswordFormControl.hasError('maxlength') || registrationForm.hasError('notSame') && !registrationForm.pristine">REGISTRARSE
+                        </button>
                     </div>
                 </div>
             </form>
